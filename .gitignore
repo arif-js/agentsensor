@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.agentsensor/
+*.log
+.DS_Store

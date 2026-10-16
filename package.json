@@ -1,0 +1,71 @@
+{
+  "name": "agentsensor-mcp",
+  "version": "0.1.0",
+  "description": "Your AI coding agent can finally see what your dev server sees. Real-time runtime, bundler (Vite/Next.js/Storybook), TypeScript, and browser errors for Claude Code, Codex, Cursor, Antigravity, and Copilot via MCP.",
+  "type": "module",
+  "license": "MIT",
+  "author": "arif-js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arif-js/agentsensor.git"
+  },
+  "homepage": "https://github.com/arif-js/agentsensor#readme",
+  "bugs": {
+    "url": "https://github.com/arif-js/agentsensor/issues"
+  },
+  "bin": {
+    "agentsensor": "dist/cli.js",
+    "agentsensor-mcp": "dist/mcp.js"
+  },
+  "exports": {
+    ".": "./dist/mcp.js",
+    "./cli": "./dist/cli.js",
+    "./register": "./dist/register.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.17"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "ai",
+    "agent",
+    "claude-code",
+    "codex",
+    "cursor",
+    "antigravity",
+    "copilot",
+    "windsurf",
+    "debugging",
+    "runtime-errors",
+    "vite",
+    "nextjs",
+    "storybook"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "prepublishOnly": "npm run typecheck && npm run build && npm test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.15",
+    "@types/node": "^26.6.5",
+    "tsup": "^9.0.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}
