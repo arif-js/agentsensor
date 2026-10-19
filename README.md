@@ -12,7 +12,7 @@ Wrap your dev server with one command, then let Claude Code, Codex, Cursor, Anti
 [![MCP](https://img.shields.io/badge/MCP-server-8A2BE2)](https://modelcontextprotocol.io)
 [![Node](https://img.shields.io/node/v/agentsensor-mcp)](https://nodejs.org)
 
-[What it does](#what-it-does) · [Demo](#demo) · [Quick start](#quick-start) · [MCP tools](#mcp-tools) · [How it works](#how-it-works) · [Contributing](#contributing)
+[What it does](#what-it-does) · [Supported stack](#supported-stack) · [Demo](#demo) · [Quick start](#quick-start) · [MCP tools](#mcp-tools) · [How it works](#how-it-works) · [Contributing](#contributing)
 
 </div>
 
@@ -23,13 +23,28 @@ Wrap your dev server with one command, then let Claude Code, Codex, Cursor, Anti
 ## What it does
 
 - ⚡ **Zero code changes:** wrap your existing dev script (`agentsensor run -- npm run dev`). No SDK imports, no middleware, no config files.
-- 🌐 **Captures both server and browser crashes:** hooks Node V8 exceptions, Vite / Remix / Storybook browser runtime errors (`window.onerror`, `unhandledrejection`, React `console.error`), Next.js / Webpack / Turbopack build errors, esbuild errors, and TypeScript (`tsc`) errors.
-- 🎯 **Source-mapped to your real code:** automatically enables `--enable-source-maps`, strips `pnpm` / `turbo` monorepo prefixes, collapses `node_modules` noise, and maps browser URLs (`http://localhost:6006/src/...`) back to exact monorepo files (`packages/ui/src/...`).
+- 🌐 **Captures both server and browser crashes:** intercepts backend runtime exceptions, bundler compilation errors, and in-browser exceptions (`window.onerror`, `unhandledrejection`, React component errors).
+- 🎯 **Source-mapped to your real code:** automatically enables `--enable-source-maps`, strips monorepo runner prefixes, collapses `node_modules` noise, and maps browser URLs back to exact workspace files.
 - 📋 **Live `open` vs `resolved` status board:** maintains `.agentsensor/status.json` so fixed errors from earlier sessions never confuse the agent — while automatically reopening an error if it ever happens again.
 - 🤖 **Automatic agent triggering:** sends MCP server instructions so connected agents check `get_runtime_errors` first whenever you report a bug or crash.
 - 🔒 **100% local:** no accounts, no cloud, no telemetry, no background daemons.
 
 AgentSensor doesn't guess fixes — it gives your coding agent the exact runtime reality (error type, message, source-mapped `file:line:column`, and the 30 log lines leading up to the crash) so the agent fixes the real bug on the first try.
+
+## Supported stack
+
+AgentSensor currently supports the **Node.js, JavaScript, and TypeScript** ecosystem:
+
+| Layer | Supported | Details |
+| :--- | :--- | :--- |
+| **Runtimes** | Node.js (>=18.17) | JavaScript & TypeScript |
+| **Frontend & SSR** | Next.js, Vite, Remix, Storybook | Dev server builds & browser crashes (`window.onerror`, `unhandledrejection`, React `console.error`) |
+| **Backend** | Express, Fastify, NestJS, Koa, Node CLI scripts | V8 exceptions, unhandled promise rejections, source-mapped stack traces |
+| **Compilers & Bundlers** | `tsc`, Turbopack, Webpack, esbuild, Babel | Build-time errors, type errors, syntax crashes |
+| **Monorepos** | `pnpm`, Turborepo, Nx | Strips runner prefixes, maps local package paths |
+
+> [!NOTE]
+> **Non-Node runtimes (Python, Go, Rust):** Not supported yet. Dedicated runtime hooks and stack trace parsers for these languages are planned for upcoming releases.
 
 ## Demo
 
@@ -49,9 +64,9 @@ When your app or browser throws an error, just talk to your assistant naturally:
 
 ## Who it's for
 
-- **Developers using AI coding agents (Claude Code, Codex, Antigravity, Cursor, Windsurf, Copilot):** stop acting as the copy-paste bridge between your terminal/Chrome DevTools and your chat window.
-- **Full-stack & UI engineers (Next.js, Vite, Remix, Storybook, Express, Fastify):** catch both backend route crashes and frontend React component render errors in one place.
-- **Monorepo teams (`pnpm`, Turborepo, Nx):** automatic workspace root detection and sub-package path resolution out of the box.
+- **Developers using AI coding agents:** stop acting as the manual copy-paste bridge between terminal errors, Chrome DevTools, and chat windows (Claude Code, Codex, Antigravity, Cursor, Windsurf, Copilot).
+- **Full-stack teams:** catch backend route crashes and frontend React component render errors in one unified stream.
+- **Monorepo teams:** automatic workspace root detection and sub-package path resolution out of the box.
 
 ## Quick start
 
@@ -130,7 +145,7 @@ Clone the repo and run the planted-bug demo server:
 
 ```sh
 git clone https://github.com/arif-js/agentsensor.git
-cd agentsensor-mcp
+cd agentsensor
 npm install && npm run build
 AUTO_TRIGGER=1 node dist/cli.js run -- npx tsx examples/broken-app/server.ts
 ```
