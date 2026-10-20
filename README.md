@@ -11,6 +11,7 @@ Wrap your dev server with one command, then let Claude Code, Codex, Cursor, Anti
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-server-8A2BE2)](https://modelcontextprotocol.io)
 [![Smithery](https://smithery.ai/badge/@arif-js/agentsensor)](https://smithery.ai/server/@arif-js/agentsensor)
+[![Glama](https://glama.ai/mcp/servers/arif-js/agentsensor/badges/score.svg)](https://glama.ai/mcp/servers/arif-js/agentsensor)
 [![Node](https://img.shields.io/node/v/agentsensor-mcp)](https://nodejs.org)
 
 [What it does](#what-it-does) · [Supported stack](#supported-stack) · [Demo](#demo) · [Quick start](#quick-start) · [MCP tools](#mcp-tools) · [How it works](#how-it-works) · [Contributing](#contributing)
