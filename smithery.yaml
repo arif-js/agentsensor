@@ -1,0 +1,17 @@
+# Smithery configuration for AgentSensor
+# https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      project:
+        type: string
+        description: "Path to project root directory containing .agentsensor (optional, defaults to workspace roots or current working directory)"
+  commandFunction: |-
+    (config) => ({
+      command: 'npx',
+      args: ['-y', 'agentsensor-mcp', ...(config && config.project ? ['--project', config.project] : [])]
+    })
+

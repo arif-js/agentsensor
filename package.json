@@ -1,6 +1,7 @@
 {
   "name": "agentsensor-mcp",
   "version": "0.1.1",
+  "mcpName": "io.github.arif-js/agentsensor",
   "description": "Your AI coding agent can finally see what your dev server sees. Real-time runtime, bundler (Vite/Next.js/Storybook), TypeScript, and browser errors for Claude Code, Codex, Cursor, Antigravity, and Copilot via MCP.",
   "type": "module",
   "license": "MIT",
