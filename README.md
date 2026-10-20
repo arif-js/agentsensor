@@ -10,7 +10,6 @@ Wrap your dev server with one command, then let Claude Code, Codex, Cursor, Anti
 [![CI](https://github.com/arif-js/agentsensor/actions/workflows/ci.yml/badge.svg)](https://github.com/arif-js/agentsensor/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-server-8A2BE2)](https://modelcontextprotocol.io)
-[![Smithery](https://smithery.ai/badge/@arif-js/agentsensor)](https://smithery.ai/server/@arif-js/agentsensor)
 [![Glama](https://glama.ai/mcp/servers/arif-js/agentsensor/badges/score.svg)](https://glama.ai/mcp/servers/arif-js/agentsensor)
 [![Node](https://img.shields.io/node/v/agentsensor-mcp)](https://nodejs.org)
 
@@ -83,12 +82,6 @@ npx -y agentsensor-mcp run -- npm run dev
 Your terminal output and colors stay completely unchanged, and `.agentsensor/` is automatically added to `.gitignore`.
 
 ### 2. Connect your AI coding agent (one-time setup)
-
-#### Via Smithery (Automatic install for Claude Desktop)
-
-```sh
-npx -y @smithery/cli install @arif-js/agentsensor --client claude
-```
 
 #### Claude Code
 
